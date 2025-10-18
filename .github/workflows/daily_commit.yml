@@ -8,11 +8,16 @@ on:
 jobs:
   commit:
     runs-on: ubuntu-latest
+
+    # THE FIX IS HERE: This block grants the job write permissions.
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ allows push access
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit step - 23f2001869@ds.study.iitm.ac.in
         run: |
